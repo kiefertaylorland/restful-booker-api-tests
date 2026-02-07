@@ -1,0 +1,19 @@
+{
+  "name": "restful-booker-api-tests",
+  "version": "1.0.0",
+  "description": "API test suite for Restful-Booker hotel booking API using Playwright",
+  "private": true,
+  "scripts": {
+    "test": "npx playwright test",
+    "test:debug": "npx playwright test --debug",
+    "report": "npx playwright show-report",
+    "lint": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.50.0",
+    "typescript": "^5.7.0"
+  },
+  "keywords": ["playwright", "api-testing", "rest", "qa", "typescript"],
+  "author": "Kiefer Land",
+  "license": "MIT"
+}
