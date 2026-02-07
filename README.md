@@ -1,6 +1,6 @@
 # Restful-Booker API Tests
 
-[![API Tests](https://github.com/YOUR_USERNAME/restful-booker-api-tests/actions/workflows/playwright.yml/badge.svg)](https://github.com/YOUR_USERNAME/restful-booker-api-tests/actions/workflows/playwright.yml)
+[![API Tests](https://github.com/kiefertaylorland/restful-booker-api-tests/actions/workflows/playwright.yml/badge.svg)](https://github.com/kiefertaylorland/restful-booker-api-tests/actions/workflows/playwright.yml)
 
 API test suite for [Restful-Booker](https://restful-booker.herokuapp.com) — a public hotel booking REST API. Built with **TypeScript** and **Playwright's** built-in request API.
 
@@ -55,7 +55,7 @@ restful-booker-api-tests/
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/restful-booker-api-tests.git
+git clone https://github.com/kiefertaylorland/restful-booker-api-tests.git
 cd restful-booker-api-tests
 
 # Install dependencies
