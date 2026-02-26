@@ -69,11 +69,20 @@ const stats = {
 const suites = {};
 for (const t of tests) {
   const key = t.suite;
-  if (!suites[key]) suites[key] = { passed: 0, failed: 0, skipped: 0, total: 0 };
+  if (!suites[key]) suites[key] = { passed: 0, failed: 0, skipped: 0, flaky: 0, total: 0 };
   suites[key].total++;
-  if (t.status === "expected") suites[key].passed++;
-  else if (t.status === "unexpected") suites[key].failed++;
-  else suites[key].skipped++;
+  if (t.status === "expected") {
+    suites[key].passed++;
+  } else if (t.status === "unexpected") {
+    suites[key].failed++;
+  } else if (t.status === "skipped") {
+    suites[key].skipped++;
+  } else if (t.status === "flaky") {
+    suites[key].flaky++;
+  } else {
+    // Treat any other/unknown status as skipped for suite-level aggregation
+    suites[key].skipped++;
+  }
 }
 
 const timestamp = new Date().toLocaleDateString("en-US", {
