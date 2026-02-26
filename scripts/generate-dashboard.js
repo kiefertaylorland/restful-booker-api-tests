@@ -260,7 +260,14 @@ ${(() => {
 </html>`;
 
 // ── Write output ────────────────────────────────────────────────────────────
-fs.mkdirSync(outputDir, { recursive: true });
-const outPath = path.join(outputDir, "index.html");
-fs.writeFileSync(outPath, html);
-console.log(`Dashboard generated → ${outPath}`);
+try {
+  fs.mkdirSync(outputDir, { recursive: true });
+  const outPath = path.join(outputDir, "index.html");
+  fs.writeFileSync(outPath, html);
+  console.log(`Dashboard generated → ${outPath}`);
+} catch (err) {
+  console.error(
+    `Error: Failed to generate dashboard in "${outputDir}". ${err && err.message ? err.message : err}`
+  );
+  process.exit(1);
+}
