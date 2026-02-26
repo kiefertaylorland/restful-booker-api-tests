@@ -4,6 +4,22 @@
 
 API test suite for [Restful-Booker](https://restful-booker.herokuapp.com) — a public hotel booking REST API. Built with **TypeScript** and **Playwright's** built-in request API.
 
+## Dashboard
+
+A live test dashboard is deployed to GitHub Pages after each run on `main`:
+
+🔗 **[View Dashboard](https://kiefertaylorland.github.io/restful-booker-api-tests/)**
+
+The dashboard shows pass rates, suite breakdowns, and individual test results at a glance.
+
+To generate the dashboard locally after running tests:
+
+```bash
+npx playwright test
+npm run dashboard
+# Open dashboard/index.html in your browser
+```
+
 ## What's Tested
 
 | Area | Tests | Description |
@@ -27,12 +43,14 @@ API test suite for [Restful-Booker](https://restful-booker.herokuapp.com) — a 
 ```
 restful-booker-api-tests/
 ├── .github/workflows/
-│   └── playwright.yml        # CI pipeline
+│   └── playwright.yml        # CI pipeline + dashboard deploy
 ├── docs/
 │   └── test-plan.md          # Test strategy document
 ├── helpers/
 │   ├── api-client.ts         # Auth token manager
 │   └── test-data.ts          # Booking data factories
+├── scripts/
+│   └── generate-dashboard.js # Builds HTML dashboard from test results
 ├── tests/
 │   ├── health.spec.ts        # Health check
 │   ├── auth.spec.ts          # Authentication
@@ -85,6 +103,8 @@ Tests run automatically on every push and pull request to `main`. The workflow:
 2. Installs dependencies
 3. Runs the API tests
 4. Uploads the HTML report as an artifact (30-day retention)
+5. Generates the test dashboard
+6. Deploys the dashboard to GitHub Pages (on pushes to `main`)
 
 ## API Under Test
 

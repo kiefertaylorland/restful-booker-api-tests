@@ -3,9 +3,13 @@ node_modules/
 
 # Playwright
 test-results/
+test-results.json
 playwright-report/
 blob-report/
 playwright/.cache/
+
+# Dashboard (generated)
+dashboard/
 
 # Build
 dist/
