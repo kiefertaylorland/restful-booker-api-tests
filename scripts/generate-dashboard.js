@@ -17,7 +17,21 @@ if (!fs.existsSync(inputFile)) {
   process.exit(1);
 }
 
-const raw = JSON.parse(fs.readFileSync(inputFile, "utf-8"));
+let raw;
+try {
+  const fileContents = fs.readFileSync(inputFile, "utf-8");
+  raw = JSON.parse(fileContents);
+} catch (err) {
+  console.error(`Error: Failed to parse JSON from ${inputFile}.`);
+  if (err && err.message) {
+    console.error(`Reason: ${err.message}`);
+  }
+  console.error(
+    "The test-results.json file may be incomplete or corrupted. " +
+      "Try re-running your Playwright tests: npx playwright test"
+  );
+  process.exit(1);
+}
 
 // ── Extract test data ───────────────────────────────────────────────────────
 function extractTests(suites) {
